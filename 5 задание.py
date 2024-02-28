@@ -1,8 +1,7 @@
-a=0
-c = ''
-i = int(input("Количество слов?: "))
-while a<i:
-    b = input("Какое слово?: ")
-    c += b + " "
-    a += 1
-print (c)
+n = int(input("Количество слов: "))
+stroka = ""
+while n > 0:
+    slovo = str(input("Введите слово: "))
+    stroka = stroka + " " + slovo
+    n-= 1
+print(stroka)

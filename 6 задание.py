@@ -1,7 +1,7 @@
-c = ''
+str = ""
 while True:
-    b = input("Какое слово?: ")
-    if b == "stop":
+    slovo = input("Введите слово: ")
+    if slovo == "stop":
         break
-    c += b + " "
-print(c)
+    str = str + " " + slovo
+print(str)

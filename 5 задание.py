@@ -1,7 +1,7 @@
-n = int(input("Количество слов: "))
-stroka = ""
-while n > 0:
-    slovo = str(input("Введите слово: "))
-    stroka = stroka + " " + slovo
-    n-= 1
-print(stroka)
+a = int(input('Введите количество слов:'))
+words = []
+for i in range (a):
+    word = input('введите слово')
+    words.append(word)
+results = ' ' .join(words)
+print(results)

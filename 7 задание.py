@@ -1,5 +1,5 @@
 while True:
-    word = input('Введите слово:')
+    word = input('Введите слово: ')
     if 'ф' in word:
         print ('Ого! Это редкое слово!', word)
         break

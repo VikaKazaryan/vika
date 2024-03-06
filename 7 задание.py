@@ -1,8 +1,7 @@
-words = []
 while True:
-    word = input('Введите слово')
-    if word == 'stop':
+    word = input('Введите слово:')
+    if 'ф' in word:
+        print ('Ого! Это редкое слово!', word)
         break
-    words.append(word)
-results = ' ' .join(words)
-print(results)
+    else:
+        print ('Эх, это не очень редкое слово...', word)

@@ -1,11 +1,15 @@
 def z1():
-    def delit(x):
-        if x % 5 == 0:
-            return "Введенное число делится на 5"
+    def delit(x, y):
+        if x % y == 0:
+            return True
         else:
             return False
     x = int(input("введите число: "))
-    print(delit(x))
+    y = int(input("введите число: "))
+    if delit(x, y):
+        print(x, "делится на", y)
+    else:
+        print(x, "не делится на", y)
 z1()
 
 def z2():
@@ -22,41 +26,13 @@ def z2():
 z2()
 
 def z3():
-    def mag(x):
-        if x[-2] == '0':
-            chislo = x[-1]
-        else:
-            chislo = x[-2:]
-        if x[0] == '0' and x[3] != '0':
-            itog = int(x[1]) * int(x[3:5])
-            if str(itog) == chislo:
-                return True
-            else:
-                return False
-        elif x[0] == '0' and x[3] == '0':
-            itog = int(x[1]) * int(x[4])
-            if str(itog) == chislo:
-                return True
-            else:
-                return False
-        elif x[0] != '0' and x[3] == '0':
-            itog = int(x[:2]) * int(x[4])
-            if str(itog) == chislo:
-                return True
-            else:
-                return False
-        elif x[0] != '0' and x[3] != '0':
-            itog = int(x[:2]) * int(x[3:5])
-            if str(itog) == chislo:
-                return True
-            else:
-                return False
-    x = input("введите дату (в формате ДД.ММ.ГГГГ): ")
-    if len(x) == 10 and x[2] == '.' and x[5] == '.':
-        print(mag(x))
+    date = input("Введите дату в формате ДД.ММ.ГГГГ: ")
+    day, month, year = map(int, date.split('.'))
+    if day * month == int(str(year)[-2:]):
+        return True
     else:
-        print("Ошибка! Перезапустите программу и введите дату правильно!")
-z3()
+        return False
+print(z3())
 
 def z4():
     def happy(x):
@@ -76,4 +52,3 @@ def z4():
     else:
         print("Перезапустите программу и введите номер билета еще раз. В номере билета должно быть четное количество цифр!")
 z4()
-

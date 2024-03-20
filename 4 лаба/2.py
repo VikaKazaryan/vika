@@ -1,4 +1,4 @@
-def task2():
+def z2():
     def delit(x):
         itog = 300 / x
         return itog
@@ -9,4 +9,4 @@ def task2():
         print("Ошибка! Введено не число!")
     except ZeroDivisionError:
         print("Ошибка! Деление на 0 невозможно!")
-task2()
+z2()

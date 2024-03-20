@@ -1,4 +1,3 @@
-'''
 def z1():
     def delit(x):
         if x % 5 == 0:

@@ -30,3 +30,10 @@ def z3():
         imgcont.save(r'Z:4viz.jpg')
         imgcont.save(r'Z:5viz.jpg')
 z3()
+
+def z4():
+    from PIL import Image
+    m = Image.open("more.png")
+    ma = m.reduce(12)
+    ma.save('water.jpg')
+z4()

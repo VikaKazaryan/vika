@@ -31,9 +31,12 @@ def z3():
         imgcont.save(r'Z:5viz.jpg')
 z3()
 
-def z4():
-    from PIL import Image
-    m = Image.open("more.png")
-    ma = m.reduce(12)
-    ma.save('water.jpg')
-z4()
+
+def water(more, outimg, img, position):
+    baza = Image.open(more)
+    marka = Image.open(img)
+    baza.paste(marka, position)
+    baza.show()
+    baza.save(outimg)
+    if __name__ == '__main__':
+        water ("more.jpg", "imgg.jpg", "water.jpg", (0, 0))

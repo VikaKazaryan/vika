@@ -1,0 +1,56 @@
+import json
+
+# 10.1
+with open('products.json', 'r') as file:
+    data = json.load(file)
+    for product in data['products']:
+        print(f"Название: {product['name']}")
+        print(f"Цена: {product['price']}")
+        print(f"Вес: {product['weight']}")
+        if product['available']:
+            print("В наличии")
+        else:
+            print("Нет в наличии!")
+        print()
+
+# 10.2
+new_product = {}
+new_product['name'] = input("Введите название продукта: ")
+new_product['price'] = int(input("Введите цену продукта: "))
+new_product['weight'] = int(input("Введите вес продукта: "))
+new_product['available'] = input("Есть ли продукт в наличии? (да/нет): ").lower() == 'да'
+
+data['products'].append(new_product)
+
+with open('products.json', 'w') as file:
+    json.dump(data, file, indent=4)
+
+# Вывод обновленного списка продуктов
+print("\nОбновленный список продуктов:")
+for product in data['products']:
+    print(f"Название: {product['name']}")
+    print(f"Цена: {product['price']}")
+    print(f"Вес: {product['weight']}")
+    if product['available']:
+        print("В наличии")
+    else:
+        print("Нет в наличии!")
+    print()
+
+# 10.3
+en_ru_dict = {}
+with open('en-ru.txt', 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        en_word, ru_translations = line.strip().split(' - ')
+        ru_words = [word.strip() for word in ru_translations.split(',')]
+        for ru_word in ru_words:
+            if ru_word in en_ru_dict:
+                en_ru_dict[ru_word].append(en_word)
+            else:
+                en_ru_dict[ru_word] = [en_word]
+
+with open('ru-en.txt', 'w') as file:
+    for ru_word in sorted(en_ru_dict.keys()):
+        en_words = ', '.join(sorted(en_ru_dict[ru_word]))
+        file.write(f"{ru_word} – {en_words}\n")

@@ -3,7 +3,7 @@ import json
 # 10.1
 with open('products.json', 'r') as file:
     data = json.load(file)
-    for product in data['products']:
+    for product in data['products']: 
         print(f"Название: {product['name']}")
         print(f"Цена: {product['price']}")
         print(f"Вес: {product['weight']}")

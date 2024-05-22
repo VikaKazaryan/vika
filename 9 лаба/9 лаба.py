@@ -1,123 +1,36 @@
-def task1():
-    class Restaurant:
+def task1_2():
+    import os
+    from PIL import Image, ImageFilter
 
-        def __init__(self, name, cuisine_type):
-            self.name = name
-            self.cuisine_type = cuisine_type
+    images_folder = "foto/"
+    filters_folder = "filters/"
 
-        def describe_restaurant(self):
-            print(f"{self.name} serves {self.cuisine_type} cuisine.")
+    if not os.path.exists(filters_folder):
+        os.makedirs(filters_folder)
 
-        def open_restaurant(self):
-            print(f"{self.name} is now open.")
-
-    class IceCreamStand(Restaurant):
-
-        def __init__(self, name, flavors):
-            super().__init__(name, "ice cream")
-            self.flavors = flavors
-
-        def list_flavors(self):
-            print("Flavors:")
-            for flavor in self.flavors:
-                print(f"- {flavor}")
-
-    ice_cream_stand = IceCreamStand("Sweet Tooth", ["chocolate", "vanilla", "strawberry"])
-    ice_cream_stand.list_flavors()
+    for img_file in os.listdir(images_folder):
+        if img_file.endswith(".jpg") or img_file.endswith(".png"):
+            img_path = os.path.join(images_folder, img_file)
+            image = Image.open(img_path)
+            imgfilt = image.filter(ImageFilter.BLUR)
+            filtered_img_path = os.path.join(filters_folder, img_file)
+            imgfilt.save(filtered_img_path)
 
 
-task1()
-
-
-def task2():
-    class Restaurant:
-
-        def __init__(self, name, cuisine_type):
-            self.name = name
-            self.cuisine_type = cuisine_type
-
-        def describe_restaurant(self):
-            print(f"{self.name} serves {self.cuisine_type} cuisine.")
-
-        def open_restaurant(self):
-            print(f"{self.name} is now open.")
-
-    class IceCreamStand(Restaurant):
-
-        def __init__(self, name, flavors, location, hours):
-            super().__init__(name, "ice cream")
-            self.flavors = flavors
-            self.location = location
-            self.hours = hours
-
-        def list_flavors(self):
-            print("Flavors:")
-            for flavor in self.flavors:
-                print(f"- {flavor}")
-
-        def add_flavor(self, flavor):
-            self.flavors.append(flavor)
-
-        def remove_flavor(self, flavor):
-            self.flavors.remove(flavor)
-
-        def has_flavor(self, flavor):
-            return flavor in self.flavors
-
-        def get_location(self):
-            return self.location
-
-        def get_hours(self):
-            return self.hours
-
-    ice_cream_stand = IceCreamStand("Sweet Tooth", ["chocolate", "vanilla", "strawberry"], "123 Main Street",
-                                    "10am-10pm")
-
-    ice_cream_stand.add_flavor("cookie")
-
-    ice_cream_stand.remove_flavor("strawberry")
-
-    print(ice_cream_stand.has_flavor("cookie"))
-
-    print(ice_cream_stand.get_location())
-
-    print(ice_cream_stand.get_hours())
-
-
-task2()
+task1_2()
 
 
 def task3():
-    import tkinter as tk
+    total = 0
+    print("Купить:")
+    with open('danoo.csv', 'r', encoding='utf-8') as file:
+        lines = file.readlines()[1:]
+        for line in lines:
+            product, quantity, price = line.strip().split(',')
+            total += int(quantity) * int(price)
+            print(f"{product} - {quantity} шт. за {price} руб.")
 
-    class IceCreamStand:
-
-        def __init__(self, name, flavors):
-            self.name = name
-            self.flavors = flavors
-
-        def create_gui(self):
-            self.window = tk.Tk()
-            self.window.title(self.name)
-
-            self.flavors_frame = tk.Frame(self.window)
-            self.flavors_frame.pack()
-
-            self.flavors_label = tk.Label(self.flavors_frame, text="Flavors:")
-            self.flavors_label.pack()
-            self.flavors_listbox = tk.Listbox(self.flavors_frame)
-            self.flavors_listbox.pack()
-
-            for flavor in self.flavors:
-                self.flavors_listbox.insert(tk.END, flavor)
-
-            self.close_button = tk.Button(self.window, text="Close", command=self.window.destroy)
-            self.close_button.pack()
-
-            self.window.mainloop()
-
-    ice_cream_stand = IceCreamStand("Sweet Tooth", ["chocolate", "vanilla", "strawberry"])
-    ice_cream_stand.create_gui()
+    print(f"Итоговая сумма: {total} руб.")
 
 
 task3()

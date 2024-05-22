@@ -1,123 +1,36 @@
-def task1():
+def task11():
     class Restaurant:
-
-        def init(self, name, cuisine_type):
-            self.name = name
+        def __init__(self, restaurant_name, cuisine_type):
+            self.restaurant_name = restaurant_name
             self.cuisine_type = cuisine_type
+            self.rating = 0
 
         def describe_restaurant(self):
-            print(f"{self.name} serves {self.cuisine_type} cuisine.")
+            print(f"Ресторан {self.restaurant_name} специализируется на кухне {self.cuisine_type}.")
 
         def open_restaurant(self):
-            print(f"{self.name} is now open.")
+            print(f"Ресторан {self.restaurant_name} открыт!")
 
-    class IceCreamStand(Restaurant):
+        def update_rating(self, new_rating):
+            self.rating = new_rating
+            print(f"Рейтинг ресторана {self.restaurant_name} обновлен: {self.rating}.")
 
-        def init(self, name, flavors):
-            super().init(name, "ice cream")
-            self.flavors = flavors
+    newRestaurant = Restaurant("Новый Ресторан", "Итальянская")
 
-        def list_flavors(self):
-            print("Flavors:")
-            for flavor in self.flavors:
-                print(f"- {flavor}")
+    print(f"Название ресторана: {newRestaurant.restaurant_name}")
+    print(f"Тип кухни: {newRestaurant.cuisine_type}")
+    newRestaurant.describe_restaurant()
+    newRestaurant.open_restaurant()
 
-    ice_cream_stand = IceCreamStand("Sweet Tooth", ["chocolate", "vanilla", "strawberry"])
-    ice_cream_stand.list_flavors()
+    restaurant1 = Restaurant("Ресторан 1", "Французская")
+    restaurant2 = Restaurant("Ресторан 2", "Японская")
+    restaurant3 = Restaurant("Ресторан 3", "Испанская")
 
+    restaurant1.describe_restaurant()
+    restaurant2.describe_restaurant()
+    restaurant3.describe_restaurant()
 
-task1()
-
-
-def task2():
-    class Restaurant:
-
-        def init(self, name, cuisine_type):
-            self.name = name
-            self.cuisine_type = cuisine_type
-
-        def describe_restaurant(self):
-            print(f"{self.name} serves {self.cuisine_type} cuisine.")
-
-        def open_restaurant(self):
-            print(f"{self.name} is now open.")
-
-    class IceCreamStand(Restaurant):
-
-        def init(self, name, flavors, location, hours):
-            super().init(name, "ice cream")
-            self.flavors = flavors
-            self.location = location
-            self.hours = hours
-
-        def list_flavors(self):
-            print("Flavors:")
-            for flavor in self.flavors:
-                print(f"- {flavor}")
-
-        def add_flavor(self, flavor):
-            self.flavors.append(flavor)
-
-        def remove_flavor(self, flavor):
-            self.flavors.remove(flavor)
-
-        def has_flavor(self, flavor):
-            return flavor in self.flavors
-
-        def get_location(self):
-            return self.location
-
-        def get_hours(self):
-            return self.hours
-
-    ice_cream_stand = IceCreamStand("Sweet Tooth", ["chocolate", "vanilla", "strawberry"], "123 Main Street",
-                                    "10am-10pm")
-
-    ice_cream_stand.add_flavor("cookie")
-
-    ice_cream_stand.remove_flavor("strawberry")
-
-    print(ice_cream_stand.has_flavor("cookie"))
-
-    print(ice_cream_stand.get_location())
-
-    print(ice_cream_stand.get_hours())
+    restaurant1.update_rating(4.5)
 
 
-task2()
-
-
-def task3():
-    import tkinter as tk
-
-    class IceCreamStand:
-
-        def init(self, name, flavors):
-            self.name = name
-            self.flavors = flavors
-
-        def create_gui(self):
-            self.window = tk.Tk()
-            self.window.title(self.name)
-
-            self.flavors_frame = tk.Frame(self.window)
-            self.flavors_frame.pack()
-
-            self.flavors_label = tk.Label(self.flavors_frame, text="Flavors:")
-            self.flavors_label.pack()
-            self.flavors_listbox = tk.Listbox(self.flavors_frame)
-            self.flavors_listbox.pack()
-
-            for flavor in self.flavors:
-                self.flavors_listbox.insert(tk.END, flavor)
-
-            self.close_button = tk.Button(self.window, text="Close", command=self.window.destroy)
-            self.close_button.pack()
-
-            self.window.mainloop()
-
-    ice_cream_stand = IceCreamStand("Sweet Tooth", ["chocolate", "vanilla", "strawberry"])
-    ice_cream_stand.create_gui()
-
-
-task3()
+task11()
